@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary" class="font-bold">Compose</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary"><ion-icon name="attach-outline" class="rotate-90 font-1_5rem"></ion-icon></ion-button>
+      <ion-button><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
+      <ion-button><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form action="" class="ion-padding">
+    <ion-item>
+      <ion-label class="color-gray" slot="start">To</ion-label>
+      <ion-input></ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="showOtherTo = !showOtherTo" class="color-gray"><ion-icon name="chevron-{{ showOtherTo ? 'up' : 'down' }}"></ion-icon></ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item *ngIf="showOtherTo">
+      <ion-label class="color-gray" slot="start">cc</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="showOtherTo">
+      <ion-label class="color-gray" slot="start">bcc</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Subject"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea rows="6" cols="20" placeholder="Compose message"></ion-textarea>
+    </ion-item>
+
+  </form>
+
+  <ion-fab slot="fixed" vertical="center" horizontal="end">
+    <ion-fab-button class="send-email-btn"><ion-icon name="send" class="mr-1"></ion-icon> Send E-mail </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="color-primary font-bold">{{ folder }} <ion-badge class="cus-badge">3</ion-badge></ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="icon-only"> <ion-icon name="search"></ion-icon> </ion-button> </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="color-primary font-bold" size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-list-header lines="none">
+      <ion-label>Today </ion-label>
+    </ion-list-header>
+    <ion-item class="item-card" lines="none" *ngFor="let msg of [1,2,3]">
+      <ion-avatar slot="start">
+        <img src="https://cdn.pixabay.com/photo/2021/09/07/16/38/man-6604399_960_720.png">
+      </ion-avatar>
+
+      <ion-label color="primary" class="ml-0">
+        <p class="color-dark font-bold">Harrie Dannie</p>
+        <p class="color-primary font-bold font-0_8">We are the best supplier.</p>
+        <p class="color-dark font-0_8">All study material on cheap...</p>
+      </ion-label>
+
+      <div slot="end" class="ml-10px">
+        <p class="font-0_8">Apr 24</p>
+        <div class="action-icons">
+          <ion-icon name="checkmark-sharp" color="secondary"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-list-header lines="none">
+      <ion-label>Yesterday </ion-label>
+    </ion-list-header>
+    <ion-item class="item-card" lines="none" *ngFor="let msg of [1,2,3]">
+      <ion-avatar slot="start">
+        <img src="https://cdn.pixabay.com/photo/2021/09/07/16/38/man-6604399_960_720.png">
+      </ion-avatar>
+
+      <ion-label color="primary" class="ml-0">
+        <p class="color-dark font-bold">Harrie Dannie</p>
+        <p class="color-primary font-bold font-0_8">We are the best supplier.</p>
+        <p class="color-dark font-0_8">All study material on cheap...</p>
+      </ion-label>
+
+      <div slot="end" class="ml-10px">
+        <p class="font-0_8">Apr 24</p>
+        <div class="action-icons">
+          <ion-icon name="checkmark-sharp" color="secondary"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
+      </div>
+    </ion-item>
+    
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/create-email"> <ion-icon name="add"></ion-icon> </ion-fab-button>
+  </ion-fab>
+</ion-content>
