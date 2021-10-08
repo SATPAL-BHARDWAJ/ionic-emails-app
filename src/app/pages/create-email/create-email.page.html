@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title color="primary" class="font-bold">Compose</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="primary"><ion-icon name="attach-outline" class="rotate-90 font-1_5rem"></ion-icon></ion-button>
+      <ion-button color="primary" (click)="selectFile()"><ion-icon name="attach-outline" class="rotate-90 font-1_5rem"></ion-icon></ion-button>
       <ion-button><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
       <ion-button><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
     </ion-buttons>
@@ -14,36 +14,54 @@
 
 <ion-content>
 
-  <form action="" class="ion-padding">
+  <form action="" class="ion-padding" [formGroup]="emailForm" (ngSubmit)="sendEmail()">
     <ion-item>
       <ion-label class="color-gray" slot="start">To</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="email" formControlName="to" (ionChange)="getError('to')"></ion-input>
       <ion-buttons slot="end">
         <ion-button (click)="showOtherTo = !showOtherTo" class="color-gray"><ion-icon name="chevron-{{ showOtherTo ? 'up' : 'down' }}"></ion-icon></ion-button>
       </ion-buttons>
     </ion-item>
+    <p class="error" *ngIf="formErrors['to']">{{ formErrors['to'] }}</p>
 
     <ion-item *ngIf="showOtherTo">
-      <ion-label class="color-gray" slot="start">cc</ion-label>
-      <ion-input></ion-input>
+      <ion-label class="color-gray" slot="start">Cc</ion-label>
+      <ion-input type="email" formControlName="cc" (ionChange)="getError('cc')"></ion-input>
     </ion-item>
+    <p class="error" *ngIf="formErrors['cc']">{{ formErrors['cc'] }}</p>
 
     <ion-item *ngIf="showOtherTo">
-      <ion-label class="color-gray" slot="start">bcc</ion-label>
-      <ion-input></ion-input>
+      <ion-label class="color-gray" slot="start">Bcc</ion-label>
+      <ion-input type="email" formControlName="bcc" (ionChange)="getError('bcc')"></ion-input>
     </ion-item>
+    <p class="error" *ngIf="formErrors['bcc']">{{ formErrors['bcc'] }}</p>
 
     <ion-item>
-      <ion-input placeholder="Subject"></ion-input>
+      <ion-input formControlName="subject" (ionChange)="getError('subject')" placeholder="Subject"></ion-input>
     </ion-item>
+    <p class="error" *ngIf="formErrors['subject']">{{ formErrors['subject'] }}</p>
 
     <ion-item>
-      <ion-textarea rows="6" cols="20" placeholder="Compose message"></ion-textarea>
+      <ion-textarea formControlName="body" (ionChange)="getError('body')" rows="6" cols="20" placeholder="Compose message"></ion-textarea>
     </ion-item>
+    <p class="error" *ngIf="formErrors['body']">{{ formErrors['body'] }}</p>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button type="submit" class="send-email-btn" (click)="sendEmail()" [disabled]="!emailForm.valid"><ion-icon name="send" class="mr-1"></ion-icon> Send E-mail </ion-fab-button>
+    </ion-fab>
 
   </form>
 
-  <ion-fab slot="fixed" vertical="center" horizontal="end">
-    <ion-fab-button class="send-email-btn"><ion-icon name="send" class="mr-1"></ion-icon> Send E-mail </ion-fab-button>
-  </ion-fab>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-lg="4" *ngFor="let attachment of attachments; let i = index;">
+        <ion-card class="overflow-visible" >
+          <div class="del-attach" (click)="deleteAttachment(i)"> <ion-icon name="close-outline"></ion-icon> </div>
+          <ion-img [src]="getSrc(attachment)"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
 </ion-content>
