@@ -1,0 +1,7 @@
+{
+  "name": "ionic-email",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
