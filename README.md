@@ -2,9 +2,11 @@
 This is simple ionic emails app with cordova email composer plugin, camera and native file plugin
 
 # Output
-![sidemenu](image1.png)
-![inbox](image2.png)
-![compose-email](image3.png)
+![sidemenu](image1.jpeg)
+![inbox](image2.jpeg)
+![compose-email](image3.jpeg)
+![cc-bcc](image4.jpeg)
+![send-button](image5.jpeg)
 
 # Live Demo
 Blog article url will be here soon
