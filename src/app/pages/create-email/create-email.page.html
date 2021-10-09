@@ -54,10 +54,10 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-lg="4" *ngFor="let attachment of attachments; let i = index;">
+      <ion-col size="6" size-lg="4" *ngFor="let attachment of fileService.files; let i = index;">
         <ion-card class="overflow-visible" >
           <div class="del-attach" (click)="deleteAttachment(i)"> <ion-icon name="close-outline"></ion-icon> </div>
-          <ion-img [src]="getSrc(attachment)"></ion-img>
+          <ion-img [src]="attachment?.src"></ion-img>
         </ion-card>
       </ion-col>
     </ion-row>

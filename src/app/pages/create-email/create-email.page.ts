@@ -1,15 +1,14 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { EmailComposer, EmailComposerOptions } from '@ionic-native/email-composer/ngx';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import { Capacitor } from '@capacitor/core';
+import { FileService } from 'src/app/services/file/file.service';
 
 @Component({
   selector: 'app-create-email',
   templateUrl: './create-email.page.html',
   styleUrls: ['./create-email.page.scss'],
 })
-export class CreateEmailPage implements OnInit, AfterViewInit {
+export class CreateEmailPage {
 
   showOtherTo: boolean = false;
   emailForm: FormGroup;
@@ -20,7 +19,7 @@ export class CreateEmailPage implements OnInit, AfterViewInit {
   constructor(
     private emailComposer : EmailComposer,
     private formBuilder : FormBuilder,
-    private fileChooser: FileChooser
+    public fileService: FileService
   ) { 
     console.log(this.emailComposer);
 
@@ -50,14 +49,6 @@ export class CreateEmailPage implements OnInit, AfterViewInit {
 
   }
 
-  ngOnInit() {
-    
-  }
-
-  ngAfterViewInit() {
-    
-  }
-
   sendEmail() {
     console.log(this.emailForm.value);
 
@@ -66,9 +57,15 @@ export class CreateEmailPage implements OnInit, AfterViewInit {
       return false;
     }
 
+    let files = [];
+
+    this.fileService.files.forEach(file => {
+      files.push(file.path);      
+    });
+
     let email: EmailComposerOptions = {
       ...this.emailForm.value,
-      attachments : this.attachments,
+      attachments : files,
       isHtml: true
     }
 
@@ -76,25 +73,14 @@ export class CreateEmailPage implements OnInit, AfterViewInit {
     this.emailComposer.open(email);
   }
 
-  async selectFile() {
-
-    this.fileChooser.open()
-        .then(uri => {
-          console.log({uri})
-          this.attachments.push(uri);
-          
-        })
-        .catch(e => console.log(e));
-  }
-
-  getSrc( uri: string ) {
-    return Capacitor.convertFileSrc(uri);
+  selectFile() {
+    this.fileService.selectImage();
   }
 
   deleteAttachment( i: number ) {
     console.info(`Delete attachment with index -> ${i}`);
-    if ( this.attachments[i] ) {
-      this.attachments.splice(i, 1);
+    if ( this.fileService.files[i] ) {
+      this.fileService.files.splice(i, 1);
     }
   }
 

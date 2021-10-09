@@ -8,8 +8,6 @@ import { CreateEmailPageRoutingModule } from './create-email-routing.module';
 
 import { CreateEmailPage } from './create-email.page';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   imports: [
@@ -20,6 +18,6 @@ import { Camera } from '@ionic-native/camera/ngx';
     CreateEmailPageRoutingModule,
   ],
   declarations: [CreateEmailPage],
-  providers: [EmailComposer, Camera, FileChooser]
+  providers: [EmailComposer]
 })
 export class CreateEmailPageModule {}
