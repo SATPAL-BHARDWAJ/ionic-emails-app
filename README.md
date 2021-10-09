@@ -11,7 +11,7 @@ We can also add the attachments from our gallery and camera by using capacitor c
 ![send-button](image5.jpeg)
 
 # Live Demo
-Blog article url will be here soon
+[How to send ionic 5 emails?](https://sbsharma.com/compose-ionic-emails)
 
 # Contributor
 [Satpal Bhardwaj](https://sbsharma.com/ionic/)
