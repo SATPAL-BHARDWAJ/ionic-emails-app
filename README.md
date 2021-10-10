@@ -4,11 +4,11 @@ This is simple ionic emails app with cordova email composer plugin, capacitor ca
 We can also add the attachments from our gallery and camera by using capacitor camera API.
 
 # Output
-![sidemenu](image1.jpeg)
-![inbox](image2.jpeg)
-![compose-email](image3.jpeg)
-![cc-bcc](image4.jpeg)
-![send-button](image5.jpeg)
+<img src="image1.jpeg" alt="sidemenu" width="300"/>
+<img src="image2.jpeg" alt="inbox" width="300"/>
+<img src="image3.jpeg" alt="compose-email" width="300"/>
+<img src="image4.jpeg" alt="cc-bcc" width="300"/>
+<img src="image5.jpeg" alt="send-button" width="300"/>
 
 # Live Demo
 [How to send ionic 5 emails?](https://sbsharma.com/compose-ionic-emails)
